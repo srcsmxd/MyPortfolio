@@ -46,6 +46,7 @@ img:hover, img:active {
       <img class="card-img-top" src="{{ blog.blogimage.url }}" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title"> <a href="{% url 'blog:detail' blog.blogid %}">{{ blog.blogtitle }}</a></h5>
+        <sup>by {{ blog.bloguser }}</sup>
         <p class="card-text">{{ blog.blogdescription }}</p>
       </div>
     </div>    <!-- Optional JavaScript -->

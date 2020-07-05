@@ -20,6 +20,7 @@ def create(request):
             blogcreate.blogtitle = request.POST['blogtitle']
             blogcreate.blogdescription = request.POST['blogdescription']
             blogcreate.blogimage = request.FILES['blogimage'] #request.FILES.get('blogimage', False)
+            blogcreate.bloguser = request.user.username
             blogcreate.save()
             if blogcreate.blogid != None:
                 return redirect('/blog/detail/' + str(blogcreate.blogid))

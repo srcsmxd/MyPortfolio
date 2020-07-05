@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models 
 
 # Create your models here.
 class BlogCreate(models.Model):
@@ -6,3 +6,4 @@ class BlogCreate(models.Model):
     blogtitle = models.CharField(max_length = 30)
     blogdescription = models.CharField(max_length = 2000)
     blogimage = models.ImageField(upload_to='media/')
+    bloguser = models.CharField(max_length = 100)

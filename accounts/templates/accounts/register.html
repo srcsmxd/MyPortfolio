@@ -12,9 +12,9 @@
   </head>
   <body class="bg-dark text-light">
 <div class="container">
+  {{ messsage }}
     <div class="row m-5 justify-content-center">
       <div class="col col-lg-4">
-        {{ messsage }}
     <form action="{% url 'accounts:register' %}" method="post">
       {% csrf_token %}
         <h2>Register Page #1</h2>

@@ -25,7 +25,7 @@ def register(request):
                 user.save()
                 return redirect('/accounts/login/')
             else:
-                context = 'username and password doesn\'t match'
+                context = 'username already exists'
         else:
            context = 'both passwords should match'
     return render(request, 'accounts/register.html',{'message':context})
