@@ -10,7 +10,17 @@ def home(request,count=1):
     allcount = int( BlogCreate.objects.all().count() / 10 )
     if allcount < 1:
         allcount = 1
-    return render(request, 'blog/home.html',{'allblogs':allblogs, 'allcount':range(1,allcount+1)})
+
+    prev = 1
+    if count == 1:
+        prev = 1
+    else:
+        prev = count - 1
+    
+    next = count + 1
+    if next > allcount + 1:
+        next = allcount + 1
+    return render(request, 'blog/home.html',{'allblogs':allblogs,'prev':prev,'next':next ,'allcount':range(1,allcount+2)})
 
 def create(request):
     if request.user.is_authenticated:

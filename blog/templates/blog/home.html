@@ -60,7 +60,7 @@ img:hover, img:active {
     <ul class="pagination justify-content-center">
 
       <li class="page-item">
-        <a class="page-link text-secondary" href="#" aria-label="Previous">
+        <a class="page-link text-secondary" href="{% url 'blog:home' prev %}" aria-label="Previous">
              <span aria-hidden="true">&laquo;</span>
              <span class="sr-only">Previous</span>
            </a>
@@ -70,7 +70,7 @@ img:hover, img:active {
 <li class="page-item"> <a href="{% url 'blog:home' i %}" class="page-link text-secondary">{{ i }}</a> </li>
 {% endfor %}
 <li class="page-item">
-  <a class="page-link text-secondary" href="#" aria-label="Next">
+  <a class="page-link text-secondary" href="{% url 'blog:home' next %}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
