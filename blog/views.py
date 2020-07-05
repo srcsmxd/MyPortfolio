@@ -4,7 +4,7 @@ from .models import BlogCreate
 def home(request,count=1):
     allblogs = None
     if count == 1:
-        allblogs = BlogCreate.objects.all().order_by('blogid')[:10]
+        allblogs = BlogCreate.objects.all().order_by('-blogid')[:10]
     else:
         allblogs = BlogCreate.objects.all().order_by('blogid')[10*(count-1):10*count]
     allcount = BlogCreate.objects.all().count() / 10
