@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, auth
 def login(request):
     context = None
     if request.method == 'POST':
-        user = auth.authenticate(username=request.POST['email'], password=request.POST['password'])
+        user = auth.authenticate(username=request.POST['username'], password=request.POST['password'])
         if user is not None:
             auth.login(request, user)
             return redirect('/blog/')
@@ -20,8 +20,8 @@ def register(request):
     context = None
     if request.method == 'POST':
         if request.POST['password'] == request.POST['password1']:
-            if User.objects.filter(username=request.POST['email']).exists() == False:
-                user = User.objects.create_user(username=request.POST['email'], password=request.POST['password'])
+            if User.objects.filter(username=request.POST['username']).exists() == False:
+                user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'])
                 user.save()
                 return redirect('/accounts/login/')
             else:
