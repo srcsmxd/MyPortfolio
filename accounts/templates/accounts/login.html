@@ -14,7 +14,9 @@
 <div class="container">
     <div class="row mt-5 justify-content-center">
       <div class="col col-lg-4 col-md-8 col-12">
+        {% if message != None %}
         {{ message }}
+        {% endif %}
     <form action="{% url 'accounts:login' %}" method="post">
       {% csrf_token %}
       <h2>Login Page #1</h2>
