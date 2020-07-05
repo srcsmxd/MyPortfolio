@@ -13,17 +13,20 @@ def home(request,count=1):
     return render(request, 'blog/home.html',{'allblogs':allblogs, 'allcount':range(1,allcount+1)})
 
 def create(request):
-    context = None
-    if request.method == 'POST':
-        blogcreate = BlogCreate()
-        blogcreate.blogtitle = request.POST['blogtitle']
-        blogcreate.blogdescription = request.POST['blogdescription']
-        blogcreate.blogimage = request.FILES['blogimage'] #request.FILES.get('blogimage', False)
-        blogcreate.save()
-        if blogcreate.blogid != None:
-            return redirect('/blog/detail/' + str(blogcreate.blogid))
+    if request.user.is_authenticated:
+        context = None
+        if request.method == 'POST':
+            blogcreate = BlogCreate()
+            blogcreate.blogtitle = request.POST['blogtitle']
+            blogcreate.blogdescription = request.POST['blogdescription']
+            blogcreate.blogimage = request.FILES['blogimage'] #request.FILES.get('blogimage', False)
+            blogcreate.save()
+            if blogcreate.blogid != None:
+                return redirect('/blog/detail/' + str(blogcreate.blogid))
+        else:
+            return render(request, 'blog/blogcreate.html',{'created':context})
     else:
-        return render(request, 'blog/blogcreate.html',{'created':context})
+        return redirect('/accounts/login')
 
 def detail(request, blog_id):
     blogcreate = get_object_or_404(BlogCreate,pk=blog_id)

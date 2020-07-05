@@ -25,12 +25,13 @@ SECRET_KEY = '4qxzp-m1-ggxns-+$1wy24pn3d(q!=+lfiwoyi_1daw(0_3^52'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ssaisarath.herokuapp.com']
+ALLOWED_HOSTS = ['localhost','ssaisarath.herokuapp.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig',
     'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates','blog/templates'],
+        'DIRS': ['templates','blog/templates','accounts/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,4 +124,4 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-STATICFILES_STORAGE = 'whitenoise.storage.compressedmanifeststaticfilesstorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.compressedmanifeststaticfilesstorage'
