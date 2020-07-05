@@ -6,7 +6,7 @@ def home(request,count=1):
     if count == 1:
         allblogs = BlogCreate.objects.all().order_by('-blogid')[:10]
     else:
-        allblogs = BlogCreate.objects.all().order_by('blogid')[10*(count-1):10*count]
+        allblogs = BlogCreate.objects.all().order_by('-blogid')[10*(count-1):10*count]
     allcount = BlogCreate.objects.all().count() / 10
     if allcount < 1:
         allcount = 1
