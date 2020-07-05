@@ -15,14 +15,14 @@
     <div class="container">
       <div class="row justify-content-center text-center">
         <div class="col-lg-4 col-12">
-          <ul class="list-group ">
-            <li class="list-group-item bg-secondary"><a href="{% url 'blog:home' %}" class="text-white">Blog</a></li>
-            <li class="list-group-item bg-secondary"><a href="" class="text-white">Blog</a></li>
-              <li class="list-group-item bg-secondary"><a href="" class="text-white">Blog</a></li>
-                <li class="list-group-item bg-secondary"><a href="" class="text-white">Blog</a></li>
-          </ul>
-
+        <div class="list-group">
+          <a href="{% url 'blog:home' %}" class="list-group-item list-group-item-action">Blog 1.0</a>
+          <a href="{% url 'accounts:login' %}" class="list-group-item list-group-item-action">Authentication 1.0</a>
         </div>
+        </div>
+
+
+        
       </div>
     </div>
 
