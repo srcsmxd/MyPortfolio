@@ -45,9 +45,9 @@ img:hover, img:active {
     <div class="card m-4" style="width: 18rem;">
       <img class="card-img-top" src="{{ blog.blogimage.url }}" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title"> <a href="{% url 'blog:detail' blog.blogid %}">{{ blog.blogtitle }}</a></h5>
+        <h5 class="card-title"> <a href="{% url 'blog:detail' blog.blogid %}">{{ blog.blogtitle | slice:":20" }}</a></h5>
         <sup>by {{ blog.bloguser }}</sup>
-        <p class="card-text">{{ blog.blogdescription }}</p>
+        <p class="card-text">{{ blog.blogdescription | slice:":20" }}</p>
       </div>
     </div>    <!-- Optional JavaScript -->
   </div>

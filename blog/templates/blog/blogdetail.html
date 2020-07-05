@@ -30,7 +30,8 @@ img:hover, img:active {
   <body style="font-family: 'Roboto', sans-serif;">
 <div class="jumbotron jumbotron-fluid bg-dark text-light">
   <div class="container">
-  <h1>  {{ blogcreate.blogtitle }} </h1>
+    <h4>  <a href="{% url 'blog:home' %}">Back to home</a> </h4>
+    <h1>  {{ blogcreate.blogtitle }} </h1>
   </div>
 </div>
 

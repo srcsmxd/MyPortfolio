@@ -12,8 +12,8 @@
   </head>
   <body class="bg-dark text-light">
 <div class="container">
-    <div class="row m-5 justify-content-center">
-      <div class="col col-lg-4">
+    <div class="row mt-5 justify-content-center">
+      <div class="col col-lg-4 col-md-8 col-12">
         {{ message }}
     <form action="{% url 'accounts:login' %}" method="post">
       {% csrf_token %}

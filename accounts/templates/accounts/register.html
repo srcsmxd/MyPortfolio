@@ -13,8 +13,8 @@
   <body class="bg-dark text-light">
 <div class="container">
   {{ messsage }}
-    <div class="row m-5 justify-content-center">
-      <div class="col col-lg-4">
+    <div class="row mt-5 justify-content-center">
+      <div class="col col-lg-4 col-md-8 col-12">
     <form action="{% url 'accounts:register' %}" method="post">
       {% csrf_token %}
         <h2>Register Page #1</h2>
