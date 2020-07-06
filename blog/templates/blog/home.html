@@ -28,18 +28,35 @@ img:hover, img:active {
     <title>Hello, world!</title>
   </head>
   <body>
-<div class="jumbotron jumbotron-fluid bg-dark text-light">
-  <div class="container">
-  <h1>Blog 1.0</h1>
 
-  <h4><a href="{% url 'blog:create' %}">Create</a></h4>
-  <h6><a href="{% url 'home' %}">Back</a> 
-  {% if user.is_authenticated %}
-    | <a href="{% url 'accounts:logout' %}">Logout</a>
-  {% endif %}
-  </h6>
-  </div>
-
+    <div class="container-fluid p-0">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'blog:home' %}">Blog 1.0</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'blog:create' %}">Create <span class="sr-only">(current)</span></a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+            </li>
+            {% endif %}
+            <li class="nav-item active">
+              <a class="nav-link" href="?username={{username}}">My Stories</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="jumbotron jumbotron-fluid bg-dark text-light">
 </div>
 
 <div class="container">
@@ -66,13 +83,13 @@ img:hover, img:active {
       <ul class="pagination justify-content-center">
       {% if allblogs.has_previous %}  
       <li class="page-item">
-        <a class="page-link text-secondary" href="?page=1" aria-label="Previous">
+        <a class="page-link text-secondary" href="?page=1&username={{username}}" aria-label="Previous">
              <span aria-hidden="true">&laquo;&laquo;</span>
              <span class="sr-only">First</span>
            </a>
       </li>  
       <li class="page-item">
-          <a class="page-link text-secondary" href="?page={{ allblogs.previous_page_number }}" aria-label="Previous">
+          <a class="page-link text-secondary" href="?page={{ allblogs.previous_page_number }}&username={{username}}" aria-label="Previous">
                <span aria-hidden="true">&laquo;</span>
                <span class="sr-only">Previous</span>
              </a>
@@ -81,21 +98,21 @@ img:hover, img:active {
   {% for i in allblogs.paginator.page_range %}
   
   {% if allblogs.number == i %}
-  <li class="page-item"> <a href="?page={{ i }}" class="page-link text-secondary active"><strong>{{ i }}</strong></a></li>
+  <li class="page-item"> <a href="?page={{ i }}&username={{username}}" class="page-link text-secondary active"><strong>{{ i }}</strong></a></li>
   {% elif i > allblogs.number|add:'-4' and i < allblogs.number|add:'4' %}
-  <li class="page-item"> <a href="?page={{ i }}" class="page-link text-secondary">{{ i }}</a></li>  
+  <li class="page-item"> <a href="?page={{ i }}&username={{username}}" class="page-link text-secondary">{{ i }}</a></li>  
   {% endif %}
   {% endfor %}
 
   {% if allblogs.has_next %} 
   <li class="page-item">
-    <a class="page-link text-secondary" href="?page={{ allblogs.next_page_number }}" aria-label="Next">
+    <a class="page-link text-secondary" href="?page={{ allblogs.next_page_number }}&username={{username}}" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
           <span class="sr-only">Next</span>
         </a>
    </li>
    <li class="page-item">
-    <a class="page-link text-secondary" href="?page={{ allblogs.paginator.num_pages }}" aria-label="Next">
+    <a class="page-link text-secondary" href="?page={{ allblogs.paginator.num_pages }}&username={{username}}" aria-label="Next">
           <span aria-hidden="true">&raquo;&raquo;</span>
           <span class="sr-only">Last</span>
         </a>

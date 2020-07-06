@@ -4,14 +4,17 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
-    
-    allblogs = BlogCreate.objects.all()
+    if request.GET.get('username') == '' or 'username' not in request.GET:
+        allblogs = BlogCreate.objects.all()
+    else:
+        allblogs = BlogCreate.objects.filter(bloguser=request.GET.get('username'))
+
     paginator = Paginator(allblogs, 10)
     page = request.GET.get('page')
 
     allblogs = paginator.get_page(page)
 
-    return render(request, 'blog/home.html',{'allblogs':allblogs})
+    return render(request, 'blog/home.html',{'allblogs':allblogs, 'username':request.user.username})
 
     #allblogs = None
     #if count == 1:
