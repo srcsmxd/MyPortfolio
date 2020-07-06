@@ -9,7 +9,7 @@ def home(request):
         allblogs = BlogCreate.objects.all()
     else:
         allblogs = BlogCreate.objects.filter(bloguser=request.GET.get('username'))
-        username = request.user.username
+        username = request.GET.get('username')
 
     paginator = Paginator(allblogs, 10)
     page = request.GET.get('page')

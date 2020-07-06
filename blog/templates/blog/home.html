@@ -60,17 +60,30 @@ img:hover, img:active {
 </div>
 
 <div class="container">
-  <h5>Check out all the stories below</h5>
+  <h5>Check out all  
+    {% if username == request.user|stringformat:'s' %}
+    <strong>your</strong>
+    {% endif %} 
+    stories 
+    {% if username != '' %}
+    {% if username != request.user|stringformat:'s' %}
+    by <strong>{{username}}</strong>
+    {% endif %}
+    {% endif %}
+    </h5>
 <div class="row">
 {% for blog in allblogs %}
   <div class="col col-lg-4 col-md-6 col-12">
+  
     <div class="card m-4" style="width: 18rem;">
+      <a href="{% url 'blog:detail' blog.blogid %}" class="text-decoration-none text-dark">
       <img class="card-img-top" src="{{ blog.blogimage.url }}" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title"> <a href="{% url 'blog:detail' blog.blogid %}">{{ blog.blogtitle | slice:":20" }}</a></h5>
+        <h5 class="card-title"> {{ blog.blogtitle | slice:":20" }}</h5>
         <sup>by {{ blog.bloguser }}</sup>
         <p class="card-text">{{ blog.blogdescription | slice:":20" }}</p>
       </div>
+    </a>
     </div>    <!-- Optional JavaScript -->
   </div>
 {% endfor %}
