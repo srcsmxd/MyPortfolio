@@ -19,7 +19,7 @@
         {% endif %}
     <form action="{% url 'accounts:login' %}" method="post">
       {% csrf_token %}
-      <h2>Login Page #1</h2>
+      <h2>Login Page 1.0</h2>
       <div class="form-group">
         <label for="email">Username</label>
   <input type="text" class="form-control" id="username" name="username" placeholder="Username">
@@ -33,7 +33,10 @@
         <input type="submit" class="form-control bg-secondary text-light border border-secondary">
       </div>
     </form>
-<a href="{% url 'accounts:register' %}" class="text-light">not a member ? register</a>
+    <div class="text-secondary">not a member ? <a href="{% url 'accounts:register' %}" class="text-light">register</a>
+      or back to <a href="{% url 'home' %}" class="text-light">home</a>
+    </div>
+
       </div>
     </div>
 <div>

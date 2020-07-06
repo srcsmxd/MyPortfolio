@@ -34,7 +34,11 @@
         <input type="submit" class="form-control bg-secondary text-light border border-secondary">
       </div>
     </form>
-<a href="{% url 'accounts:login' %}" class="text-light">already a member ? login</a>
+    <div class="text-secondary">
+      already a member ? 
+    <a href="{% url 'accounts:login' %}" class="text-light">login</a>
+    or back to <a href="{% url 'home' %}" class="text-light">home</a>
+    </div>
       </div>
     </div>
 <div>

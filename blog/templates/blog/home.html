@@ -79,9 +79,9 @@ img:hover, img:active {
       <a href="{% url 'blog:detail' blog.blogid %}" class="text-decoration-none text-dark">
       <img class="card-img-top" src="{{ blog.blogimage.url }}" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title"> {{ blog.blogtitle | slice:":20" }}</h5>
+        <h5 class="card-title text-truncate"> {{ blog.blogtitle | slice:":25" }}</h5>
         <sup>by {{ blog.bloguser }}</sup>
-        <p class="card-text">{{ blog.blogdescription | slice:":20" }}</p>
+        <p class="card-text text-truncate">{{ blog.blogdescription | slice:":40" }}</p>
       </div>
     </a>
     </div>    <!-- Optional JavaScript -->
