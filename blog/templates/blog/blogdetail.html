@@ -44,9 +44,11 @@ img:hover, img:active {
             <!--<li class="nav-item active">
               <a class="nav-link" href="?username={{currentuser}}">Edit</a>
             </li>-->
+            {% if currentuser == blogcreate.bloguser %}
             <li class="nav-item active">
               <a class="nav-link" href="{% url 'blog:delete' blogcreate.blogid %}">Delete</a>
             </li>
+            {% endif %}
             <li class="nav-item active">
               <a class="nav-link" href="/blog/?username={{currentuser}}">My Stories</a>
             </li>

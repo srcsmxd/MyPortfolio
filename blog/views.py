@@ -60,5 +60,7 @@ def detail(request, blog_id):
     return render(request, 'blog/blogdetail.html', {'blogcreate':blogcreate,'currentuser':request.user.username})
 
 def delete(request, blog_id):
-    BlogCreate.objects.filter(blogid=blog_id).delete()
+    blog = BlogCreate.objects.get(blogid=blog_id)
+    if request.user.username == blog.bloguser:
+        blog.delete()
     return redirect('/blog/')
