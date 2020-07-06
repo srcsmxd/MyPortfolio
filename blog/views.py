@@ -16,7 +16,7 @@ def home(request):
 
     allblogs = paginator.get_page(page)
 
-    return render(request, 'blog/home.html',{'allblogs':allblogs, 'username':username})
+    return render(request, 'blog/home.html',{'allblogs':allblogs,'user':request.user.username,'username':username})
 
     #allblogs = None
     #if count == 1:
