@@ -1,26 +1,37 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import BlogCreate
-# Create your views here.
-def home(request,count=1):
-    allblogs = None
-    if count == 1:
-        allblogs = BlogCreate.objects.all().order_by('-blogid')[:10]
-    else:
-        allblogs = BlogCreate.objects.all().order_by('-blogid')[10*(count-1):10*count]
-    allcount = int( BlogCreate.objects.all().count() / 10 )
-    if allcount < 1:
-        allcount = 1
+from django.core.paginator import Paginator
 
-    prev = 1
-    if count == 1:
-        prev = 1
-    else:
-        prev = count - 1
+# Create your views here.
+def home(request):
     
-    next = count + 1
-    if next > allcount + 1:
-        next = allcount + 1
-    return render(request, 'blog/home.html',{'allblogs':allblogs,'prev':prev,'next':next ,'allcount':range(1,allcount+2)})
+    allblogs = BlogCreate.objects.all()
+    paginator = Paginator(allblogs, 10)
+    page = request.GET.get('page')
+
+    allblogs = paginator.get_page(page)
+
+    return render(request, 'blog/home.html',{'allblogs':allblogs})
+
+    #allblogs = None
+    #if count == 1:
+    #    allblogs = BlogCreate.objects.all().order_by('-blogid')[:10]
+    #else:
+    #   allblogs = BlogCreate.objects.all().order_by('-blogid')[10*(count-1):10*count]
+    #allcount = int( BlogCreate.objects.all().count() / 10 )
+    #if allcount < 1:
+    #    allcount = 1
+
+    #prev = 1
+    #if count == 1:
+    #    prev = 1
+    #else:
+    #   prev = count - 1
+    
+    #next = count + 1
+    #if next > allcount + 1:
+    #    next = allcount + 1
+    #return render(request, 'blog/home.html',{'allblogs':allblogs,'prev':prev,'next':next ,'allcount':range(1,allcount+2)})
 
 def create(request):
     if request.user.is_authenticated:
