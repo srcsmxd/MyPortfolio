@@ -6,9 +6,9 @@ from django.core.paginator import Paginator
 def home(request):
     username = ''
     if request.GET.get('username') == '' or 'username' not in request.GET:
-        allblogs = BlogCreate.objects.all()
+        allblogs = BlogCreate.objects.all().order_by('-blogid')
     else:
-        allblogs = BlogCreate.objects.filter(bloguser=request.GET.get('username'))
+        allblogs = BlogCreate.objects.filter(bloguser=request.GET.get('username')).order_by('-blogid')
         username = request.GET.get('username')
 
     paginator = Paginator(allblogs, 10)
