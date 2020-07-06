@@ -43,7 +43,7 @@ img:hover, img:active {
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item active">
-              <a class="nav-link" href="?username={{user}}">My Stories</a>
+              <a class="nav-link" href="?username={{currentuser}}">My Stories</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
