@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
-    username = None
+    username = ''
     if request.GET.get('username') == '' or 'username' not in request.GET:
         allblogs = BlogCreate.objects.all()
     else:
