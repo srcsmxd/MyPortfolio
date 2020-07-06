@@ -10,17 +10,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 <style>
-img {
-  filter: gray; /* IE6-9 */
-  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
-  filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
-}
-
-/* Disable grayscale on hover */
-img:hover, img:active {
-  -webkit-filter: grayscale(0);
-  filter: none;
-}
 </style>
 
 
@@ -66,6 +55,7 @@ img:hover, img:active {
 </div>
 
 <div class="container">
+  <img src="{{ blogcreate.blogimage.url }}" alt="" class="img-fluid">
   <h5> {{ blogcreate.blogdescription }}</h5>
 
 </div>
