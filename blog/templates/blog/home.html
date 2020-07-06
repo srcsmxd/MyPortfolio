@@ -59,7 +59,7 @@ img:hover, img:active {
     <div class="jumbotron jumbotron-fluid bg-dark text-light">
 </div>
 
-<div class="container">
+<div class="container min-vh-100">
   <h5>Check out all  
     {% if username == request.user|stringformat:'s' %}
     <strong>your</strong>
@@ -135,8 +135,9 @@ img:hover, img:active {
       </div>
   
 
-
-<div class="jumbotron jumbotron-fluid  bg-dark mb-0 p-5">
+<div class="footer">
+  <div class="jumbotron jumbotron-fluid  bg-dark mb-0 p-5">
+  </div>  
 </div>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
